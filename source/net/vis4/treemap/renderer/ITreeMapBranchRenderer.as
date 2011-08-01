@@ -70,31 +70,6 @@ package net.vis4.treemap.renderer
 		 * Returns the item at the specified index.
 		 */
 		function getItemAt(index:int):TreeMapItemLayoutData;
-	
-		/**
-		 * Adds an item to be displayed in this branch.
-		 */
-		function addItem(item:TreeMapItemLayoutData):void;
-	
-		/**
-		 * Adds an item to a specific position in this branch.
-		 */
-		function addItemAt(item:TreeMapItemLayoutData, index:int):void;
-	
-		/**
-		 * Removes an item that is currently being displayed in this branch.
-		 */
-		function removeItem(item:TreeMapItemLayoutData):void;
-	
-		/**
-		 * Removes an item from a specific position in this branch.
-		 */
-		function removeItemAt(index:int):void;
-		
-		/**
-		 * Removes all items currently displayed in this branch.
-		 */
-		function removeAllItems():void;
 		
 		/**
 		 * Returns an Array containing all TreeMapItemLayoutData instances displayed by this branch.

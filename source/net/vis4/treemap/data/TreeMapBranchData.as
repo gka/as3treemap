@@ -24,6 +24,7 @@
 
 package net.vis4.treemap.data
 {
+	import net.vis4.treemap.layout.ITreeMapLayoutStrategy;
 	import net.vis4.treemap.TreeMap;
 
 	/**

@@ -24,12 +24,7 @@
 
 package net.vis4.treemap.renderer
 {
-	import mx.core.IDataRenderer;
-	import mx.styles.IStyleClient;
-	import mx.core.IUIComponent;
-	import mx.core.IFlexDisplayObject;
-	import flash.events.IEventDispatcher;
-	import mx.core.IInvalidating;
+
 
 	/**
 	 * The interface that defines functionality required for a TreeMap control's
@@ -38,16 +33,16 @@ package net.vis4.treemap.renderer
 	 * @author Josh Tynjala
 	 * @see com.flextoolbox.controls.TreeMap
 	 */
-	public interface ITreeMapItemRenderer extends IDataRenderer, IUIComponent, IEventDispatcher, IFlexDisplayObject, IStyleClient, IInvalidating
+	public interface ITreeMapItemRenderer
 	{
 		/**
 		 * Indicates if the item is selected or not.
 		 */
-		function get selected():Boolean;
+		//function get selected():Boolean;
 		
 		/**
 		 * @private
 		 */
-		function set selected(value:Boolean):void;
+		//function set selected(value:Boolean):void;
 	}
 }

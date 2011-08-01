@@ -24,6 +24,7 @@
 
 package net.vis4.treemap.data
 {
+	import flash.geom.Rectangle;
 	/**
 	 * Used by instances of ITreeMapLayoutStrategy to position nodes within a
 	 * TreeMap control
@@ -80,5 +81,10 @@ package net.vis4.treemap.data
 		 * The height of the node.
 		 */
 		public var height:Number = 0;
+		
+		public function get bounds():Rectangle
+		{
+			return new Rectangle(x, y, width, height);
+		}
 	}
 }

@@ -4,9 +4,9 @@
   <output>
     <movie disabled="False" />
     <movie input="" />
-    <movie path="bin\PureAS3.swf" />
+    <movie path="bin\Test.swf" />
     <movie fps="30" />
-    <movie width="800" />
+    <movie width="900" />
     <movie height="600" />
     <movie version="10" />
     <movie background="#FFFFFF" />

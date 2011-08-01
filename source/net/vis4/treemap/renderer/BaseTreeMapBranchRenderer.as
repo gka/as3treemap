@@ -24,6 +24,10 @@
 
 package net.vis4.treemap.renderer
 {
+	import flash.display.Sprite;
+	import net.vis4.treemap.data.BaseTreeMapData;
+	import net.vis4.treemap.data.TreeMapBranchData;
+	import net.vis4.treemap.data.TreeMapItemLayoutData;
 	import net.vis4.treemap.events.TreeMapBranchEvent;
 	
 	import flash.geom.Rectangle;
@@ -37,7 +41,7 @@ package net.vis4.treemap.renderer
 	 * @see com.flextoolbox.controls.TreeMap
 	 * @author Josh Tynjala
 	 */
-	public class BaseTreeMapBranchRenderer extends UIComponent implements ITreeMapBranchRenderer, IDropInTreeMapItemRenderer
+	public class BaseTreeMapBranchRenderer extends Sprite
 	{
 		
 	//--------------------------------------
@@ -56,39 +60,7 @@ package net.vis4.treemap.renderer
 	//  Properties
 	//--------------------------------------
 		
-		/**
-		 * @private
-		 */
-		override public function set x(value:Number):void
-		{
-			super.x = value;
-			//we need to invalidate the display list because the positions of
-			//the "children" depends on our position and bounds. however, the
-			//"children" are actually not display list children.
-			this.invalidateDisplayList();
-			//note: this appears to work correctly without the extra
-			//invalidation in flex 3, but not in flex 4
-		}
 		
-		/**
-		 * @private
-		 */
-		override public function set y(value:Number):void
-		{
-			super.y = value;
-			//for explanation, see comment in set x
-			this.invalidateDisplayList();
-		}
-		
-		/**
-		 * @inheritDoc
-		 */
-		override public function move(x:Number, y:Number):void
-		{
-			super.move(x, y);
-			//for explanation, see comment in set x
-			this.invalidateDisplayList();
-		}
 		
 		/**
 		 * @private
