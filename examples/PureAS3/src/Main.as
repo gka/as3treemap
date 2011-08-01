@@ -4,6 +4,8 @@ package
 	import flash.events.Event;
 	import net.vis4.treemap.layout.RecursiveSquarifyLayout;
 	import net.vis4.treemap.layout.SliceAndDiceLayout;
+	import net.vis4.treemap.layout.SquarifyLayout;
+	import net.vis4.treemap.layout.StripLayout;
 	import net.vis4.treemap.TreeMap;
 	
 	/**
@@ -19,7 +21,8 @@ package
 			//var treemap:TreeMap = new Treemap();
 			var recSqLayout:RecursiveSquarifyLayout = new RecursiveSquarifyLayout();
 			var slice:SliceAndDiceLayout = new SliceAndDiceLayout();
-			
+			var squar:SquarifyLayout = new SquarifyLayout();
+			var strip:StripLayout = new StripLayout(); 
 		}
 		
 	}

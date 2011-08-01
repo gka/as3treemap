@@ -25,6 +25,8 @@
 package net.vis4.treemap.layout
 {
 	import flash.geom.Rectangle;
+	import net.vis4.treemap.data.TreeMapItemLayoutData;
+	import net.vis4.treemap.renderer.ITreeMapBranchRenderer;
 
 	/**
 	 * The squarify treemap layout algorithm creates nodes that are unordered,
