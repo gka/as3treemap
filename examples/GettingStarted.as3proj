@@ -4,7 +4,7 @@
   <output>
     <movie disabled="False" />
     <movie input="" />
-    <movie path="bin\Test.swf" />
+    <movie path="out\Test.swf" />
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
@@ -14,7 +14,7 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="..\..\src" />
+    <class path="..\src" />
   </classpaths>
   <!-- Build options -->
   <build>
