@@ -65,12 +65,12 @@ The default implementation of *renderNode* looks like this:
 
 **renderBranch** is a bit more tricky. A branch is a node that contains child nodes (which are itself either rendered by *renderNode* or *renderBranch*). It takes almost the same arguments as *renderNode*, except for the container type which needs a little more explanation. Each node is rendered onto a sprite. The sprites of the children are added to the branch sprite. Drawing something onto the branch sprite graphics would be useless since the child sprites will be drawn on top. To get rid of this messyness I introduced an extension of the Sprite class which adds a foreground and a background layer. In absence of a better idea I named it *Sprite3*.  
 
-Here's a first example that draws additional borders on top of the child nodes.
+Here's a first example that draws additional borders on top of the child nodes. The line width is inverse proportional to the level, so the lower the level the thicker the line.
 
 	function renderBranch(node:TreeNode, container:Sprite3, level:uint):void 
 	{			
 		if (level > 0) {
-			container.fg.graphics.lineStyle(4/level, 0x000000);
+			container.fg.graphics.lineStyle(5/level, 0x000000);
 			container.fg.graphics.drawRect(
 				node.layout.x, node.layout.y, 
 				node.layout.width, node.layout.height
