@@ -19,10 +19,10 @@ package
 	 * ...
 	 * @author gka
 	 */
-	public class Main extends Sprite 
+	public class GettingStarted extends Sprite 
 	{
 		
-		public function Main():void 
+		public function GettingStarted():void 
 		{
 			var ldr:URLLoader = new URLLoader();
 			ldr.addEventListener(Event.COMPLETE, dataLoaded);
@@ -57,7 +57,7 @@ package
 				TreeMap.SQUARIFY_LAYOUT
 			);
 			
-			treemap.render(2);
+			treemap.render();
 			addChild(treemap);
 		}
 		
