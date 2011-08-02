@@ -94,5 +94,7 @@ package net.vis4.treemap.data
 			width = b.width;
 			height = b.height;
 		}
+		
+		public var color:uint = 0x999999;
 	}
 }
