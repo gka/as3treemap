@@ -4,7 +4,7 @@
   <output>
     <movie disabled="False" />
     <movie input="" />
-    <movie path="out\Test.swf" />
+    <movie path="bin\gettingstarted.swf" />
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
@@ -68,7 +68,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="src\BranchBorderThickness.as" />
+    <compile path="src\LabeledTreeMap.as" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
