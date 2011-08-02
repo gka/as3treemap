@@ -2,7 +2,3 @@
 .actionScriptProperties
 .flexLibProperties
 .project
-*.swf
-*.swc
-bin
-output
