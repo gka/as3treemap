@@ -1,5 +1,6 @@
 package net.vis4.treemap 
 {
+	import flash.display.CapsStyle;
 	import flash.display.Graphics;
 	import flash.display.Sprite;
 	import flash.geom.Rectangle;
@@ -60,17 +61,17 @@ package net.vis4.treemap
 			}
 		}
 		
-		public function render():void 
+		public function render(maxLevel:int = -1):void 
 		{
 			_tree.root.layout.bounds = _bounds;
-			renderSubTree(_tree.root, _container);
+			renderSubTree(_tree.root, _container, 0, maxLevel);
 		}
 		
-		private function renderSubTree(node:TreeNode, container:Sprite3, level:uint = 0):void
+		private function renderSubTree(node:TreeNode, container:Sprite3, level:uint = 0, maxLevel:int = -1):void
 		{
 			renderBranch(node, container, level);
 			
-			if (node.hasChildren) {
+			if (node.hasChildren && (maxLevel < 0 || level < maxLevel)) {
 				// render as branch = loop over children and coll renderBranch for each
 				
 				var branch:BranchRenderer = new BranchRenderer();
@@ -81,22 +82,26 @@ package net.vis4.treemap
 					var subtreeSprite:Sprite3 = new Sprite3();
 					container.addChild(subtreeSprite);
 					
-					renderSubTree(child, subtreeSprite, level+1);
+					renderSubTree(child, subtreeSprite, level+1, maxLevel);
 				}
 				
 			} else {
 				// render as node
-				renderNode(node, container);
+				renderNode(node, container, level);
 			}
 		}
 		
 		protected function renderBranch(node:TreeNode, container:Sprite3, level:uint):void 
 		{
-			if (_renderBranch is Function) return _renderBranch(node, container, level);
+			if (_renderBranch is Function) {
+				_renderBranch(node, container, level);
+				return;
+			}
+			
 			
 			if (level > 0) {
-				container.fg.graphics.lineStyle(Math.pow(Math.max(4 - level, 0),1.5), 0xffffff);
-				//container.fg.graphics.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
+				//container.fg.graphics.lineStyle(4/level, 0, 1, true, 'normal', CapsStyle.SQUARE);
+				//container.fg.graphics.drawRect(node.layout.x, node.layout.y, node.layout.width, node.layout.height);
 			}
 			
 		}
@@ -111,9 +116,12 @@ package net.vis4.treemap
 		 * @param	layoutData
 		 * @param	container
 		 */
-		protected function renderNode(node:TreeNode, container:Sprite):void
+		protected function renderNode(node:TreeNode, container:Sprite, level:uint):void
 		{
-			if (_renderNode is Function) return _renderNode(node, container);
+			if (_renderNode is Function) {
+				_renderNode(node, container);
+				return;
+			}
 			
 			var g:Graphics = container.graphics;
 			g.beginFill(0x727272, 0.3);

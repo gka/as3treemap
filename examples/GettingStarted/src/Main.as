@@ -57,7 +57,7 @@ package
 				TreeMap.SQUARIFY_LAYOUT
 			);
 			
-			treemap.render();
+			treemap.render(2);
 			addChild(treemap);
 		}
 		
