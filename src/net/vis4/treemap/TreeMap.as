@@ -97,13 +97,6 @@ package net.vis4.treemap
 				_renderBranch(node, container, level);
 				return;
 			}
-			
-			
-			if (level > 0) {
-				//container.fg.graphics.lineStyle(4/level, 0, 1, true, 'normal', CapsStyle.SQUARE);
-				//container.fg.graphics.drawRect(node.layout.x, node.layout.y, node.layout.width, node.layout.height);
-			}
-			
 		}
 		
 		// data format
@@ -119,13 +112,13 @@ package net.vis4.treemap
 		protected function renderNode(node:TreeNode, container:Sprite, level:uint):void
 		{
 			if (_renderNode is Function) {
-				_renderNode(node, container);
+				_renderNode(node, container, level);
 				return;
 			}
 			
 			var g:Graphics = container.graphics;
-			g.beginFill(0x727272, 0.3);
 			g.lineStyle(0);
+			g.beginFill(0x727272, 0.3);
 			g.drawRect(node.layout.x, node.layout.y, node.layout.width, node.layout.height);
 		}
 		
