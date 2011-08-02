@@ -86,7 +86,7 @@ The resulting treemap now looks like this:
 FAQ
 ---
 
-### Why do you forked the TreeMap Componente for Flex
+### Why have you forked the TreeMap Components for Flex
 
 Many flash developers don't like and will never the Flex framework. Therefor it makes perfect sense to remove all Flex crap out of wonderful visualization libraries.
 
