@@ -24,6 +24,10 @@ package net.vis4.treemap
 	 */
 	public class TreeMap extends Sprite 
 	{
+		static public const STRIP_LAYOUT:String = "stripLayout";
+		static public const SLICE_AND_DICE_LAYOUT:String = "sliceAndDiceLayout";
+		static public const SQUARIFY_LAYOUT:String = "squarifyLayout";
+		
 		protected var _tree:Tree;
 		
 		protected var _bounds:Rectangle;
@@ -32,14 +36,24 @@ package net.vis4.treemap
 		
 		protected var _container:Sprite3;
 		
-		public function TreeMap(tree:Tree, bounds:Rectangle) 
+		public function TreeMap(tree:Tree, bounds:Rectangle, layout:String = 'squarifyLayout') 
 		{
 			_container = new Sprite3();
 			addChild(_container);
 			
 			_bounds = bounds;
 			_tree = tree;
-			_layout = ITreeMapLayoutStrategy(new StripLayout());
+			_layout = getLayout(layout);
+		}
+		
+		protected function getLayout(layout:String):ITreeMapLayoutStrategy 
+		{
+			switch (layout) {
+				case STRIP_LAYOUT: return new StripLayout();
+				case SLICE_AND_DICE_LAYOUT: return new SliceAndDiceLayout();
+				case SQUARIFY_LAYOUT: 
+				default: return new SquarifyLayout();
+			}
 		}
 		
 		public function render():void 
@@ -75,7 +89,7 @@ package net.vis4.treemap
 		{
 			if (level > 0) {
 				container.fg.graphics.lineStyle(Math.pow(Math.max(4 - level, 0),1.5), 0xffffff);
-				container.fg.graphics.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
+				//container.fg.graphics.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
 			}
 			
 		}
@@ -93,15 +107,9 @@ package net.vis4.treemap
 		protected function renderNode(node:TreeNode, layoutData:TreeMapItemLayoutData, container:Sprite):void
 		{
 			var g:Graphics = container.graphics;
-			g.beginFill(0x6CA7D2, 0.3);
+			g.beginFill(0x727272, 0.3);
+			g.lineStyle(0);
 			g.drawRect(layoutData.x, layoutData.y, layoutData.width, layoutData.height);
-			var tf:TextField = new TextField();
-			tf.defaultTextFormat = new TextFormat('Helvetica Neue,Arial,sans-serif', 11, 0x999999);
-			tf.text = node.data.label;
-			tf.x = layoutData.x +2;
-			tf.y = layoutData.y +2;
-
-			container.addChild(tf);
 		}
 		
 	}

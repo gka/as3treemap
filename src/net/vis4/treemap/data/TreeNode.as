@@ -84,6 +84,11 @@ package net.vis4.treemap.data
 			return _weight;
 		}
 		
+		public function set weight(value:Number):void 
+		{
+			_weight = value;
+		}
+		
 	}
 
 }
