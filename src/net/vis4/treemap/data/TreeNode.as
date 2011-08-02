@@ -36,6 +36,7 @@ package net.vis4.treemap.data
 			_weight = weight;
 			_data = data;
 			_children = [];
+			_layout = new TreeMapItemLayoutData(null);
 		}
 		
 		public function get parent():TreeNode 

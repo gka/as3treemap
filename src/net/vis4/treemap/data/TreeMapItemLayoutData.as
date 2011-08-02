@@ -86,5 +86,13 @@ package net.vis4.treemap.data
 		{
 			return new Rectangle(x, y, width, height);
 		}
+		
+		public function set bounds(b:Rectangle):void
+		{
+			x = b.x;
+			y = b.y;
+			width = b.width;
+			height = b.height;
+		}
 	}
 }

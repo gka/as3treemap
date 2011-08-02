@@ -51,7 +51,11 @@ package
 				
 		protected function renderTree(tree:Tree):void 
 		{
-			var treemap:TreeMap = new TreeMap(tree, new Rectangle(10, 10, 600, 400), TreeMap.SQUARIFY_LAYOUT);
+			var treemap:TreeMap = new TreeMap(
+				tree, 
+				new Rectangle(10, 10, 600, 400), 
+				TreeMap.SQUARIFY_LAYOUT
+			);
 			
 			treemap.render();
 			addChild(treemap);

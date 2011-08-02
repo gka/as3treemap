@@ -35,9 +35,13 @@ package net.vis4.treemap
 		protected var _layout:ITreeMapLayoutStrategy;
 		
 		protected var _container:Sprite3;
+		protected var _renderBranch:Function;
+		protected var _renderNode:Function;
 		
-		public function TreeMap(tree:Tree, bounds:Rectangle, layout:String = 'squarifyLayout') 
+		public function TreeMap(tree:Tree, bounds:Rectangle, layout:String = 'squarifyLayout', renderNode:Function = null, renderBranch:Function = null) 
 		{
+			_renderNode = renderNode;
+			_renderBranch = renderBranch;
 			_container = new Sprite3();
 			addChild(_container);
 			
@@ -58,35 +62,38 @@ package net.vis4.treemap
 		
 		public function render():void 
 		{
-			renderSubTree(_tree.root, _bounds, _container);
+			_tree.root.layout.bounds = _bounds;
+			renderSubTree(_tree.root, _container);
 		}
 		
-		protected function renderSubTree(node:TreeNode, bounds:Rectangle, container:Sprite3, level:uint = 0):void
+		private function renderSubTree(node:TreeNode, container:Sprite3, level:uint = 0):void
 		{
-			renderBranch(node, bounds, container, level);
+			renderBranch(node, container, level);
 			
 			if (node.hasChildren) {
 				// render as branch = loop over children and coll renderBranch for each
 				
 				var branch:BranchRenderer = new BranchRenderer();
 				branch.setNodes(node.children);
-				_layout.updateLayout(ITreeMapBranchRenderer(branch), bounds);
+				_layout.updateLayout(ITreeMapBranchRenderer(branch), node.layout.bounds);
 				
 				for each (var child:TreeNode in node.children) {
 					var subtreeSprite:Sprite3 = new Sprite3();
 					container.addChild(subtreeSprite);
 					
-					renderSubTree(child, child.layout.bounds, subtreeSprite, level+1);
+					renderSubTree(child, subtreeSprite, level+1);
 				}
 				
 			} else {
 				// render as node
-				renderNode(node, node.layout, container);
+				renderNode(node, container);
 			}
 		}
 		
-		protected function renderBranch(node:TreeNode, bounds:Rectangle, container:Sprite3, level:uint):void 
+		protected function renderBranch(node:TreeNode, container:Sprite3, level:uint):void 
 		{
+			if (_renderBranch is Function) return _renderBranch(node, container, level);
+			
 			if (level > 0) {
 				container.fg.graphics.lineStyle(Math.pow(Math.max(4 - level, 0),1.5), 0xffffff);
 				//container.fg.graphics.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
@@ -104,12 +111,14 @@ package net.vis4.treemap
 		 * @param	layoutData
 		 * @param	container
 		 */
-		protected function renderNode(node:TreeNode, layoutData:TreeMapItemLayoutData, container:Sprite):void
+		protected function renderNode(node:TreeNode, container:Sprite):void
 		{
+			if (_renderNode is Function) return _renderNode(node, container);
+			
 			var g:Graphics = container.graphics;
 			g.beginFill(0x727272, 0.3);
 			g.lineStyle(0);
-			g.drawRect(layoutData.x, layoutData.y, layoutData.width, layoutData.height);
+			g.drawRect(node.layout.x, node.layout.y, node.layout.width, node.layout.height);
 		}
 		
 	}
