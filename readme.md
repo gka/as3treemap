@@ -65,7 +65,7 @@ The default implementation of *renderNode* looks like this:
 
 **renderBranch** is a bit more tricky. A branch is a node that contains child nodes (which are itself either rendered by *renderNode* or *renderBranch*). It takes almost the same arguments as *renderNode*, except for the container type which needs a little more explanation. Each node is rendered onto a sprite. The sprites of the children are added to the branch sprite. Drawing something onto the branch sprite graphics would be useless since the child sprites will be drawn on top. To get rid of this messyness I introduced an extension of the Sprite class which adds a foreground and a background layer. In absence of a better idea I named it *Sprite3*.  
 
-Here's a first example that draws additional borders on top of the child nodes. The line width is inverse proportional to the level, so the lower the level the thicker the line.
+Here's a first example that draws additional borders on top of the child nodes. The line width is inverse proportional to the level, so the lower the level the thicker the line. You find the complete source of this demo in BranchBorderThickness example (inside examples/GettingStarted/src)
 
 	function renderBranch(node:TreeNode, container:Sprite3, level:uint):void 
 	{			
@@ -80,7 +80,7 @@ Here's a first example that draws additional borders on top of the child nodes. 
 	
 The resulting treemap now looks like this:
 
-![treemap 2](http://vis4.net/labs/as3treemap/treemap2.png)
+![treemap 2](http://vis4.net/labs/as3treemap/treemap2a.png)
 
 	
 FAQ
