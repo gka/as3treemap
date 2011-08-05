@@ -3,8 +3,17 @@ package net.vis4.treemap.display
 	import flash.display.DisplayObject;
 	import flash.display.Graphics;
 	import flash.display.Sprite;
+
 	/**
-	 * ...
+	 * Sprite3 is a Sprite that has a foreground and a background layer.
+	 * 
+	 * If you addChild() something to a Sprite3, it will be added between
+	 * the background and the foreground sprites. Same for removeChild() etc
+	 *
+	 * You can access the foreground and background sprites using the public
+	 * properties foreground and background. You can also use fg and bg as
+ 	 * shortcuts.
+	 * 
 	 * @author gka
 	 */
 	public class Sprite3 extends Sprite
