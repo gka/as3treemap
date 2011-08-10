@@ -69,10 +69,9 @@ package net.vis4.treemap
 		
 		private function renderSubTree(node:TreeNode, container:Sprite3, level:uint = 0, maxLevel:int = -1):void
 		{
-			renderBranch(node, container, level);
-			
 			if (node.hasChildren && (maxLevel < 0 || level < maxLevel)) {
 				// render as branch = loop over children and coll renderBranch for each
+				renderBranch(node, container, level);
 				
 				var branch:BranchRenderer = new BranchRenderer();
 				branch.setNodes(node.children);

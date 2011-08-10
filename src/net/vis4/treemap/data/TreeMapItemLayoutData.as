@@ -96,5 +96,6 @@ package net.vis4.treemap.data
 		}
 		
 		public var color:uint = 0x999999;
+
 	}
 }
